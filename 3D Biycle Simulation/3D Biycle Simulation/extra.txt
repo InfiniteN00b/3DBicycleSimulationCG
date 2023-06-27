@@ -1,0 +1,79 @@
+void special(int key,int x,int y);
+void motion(int x,int y);
+
+void motion(int x,int y){
+   if(Mouse==GLUT_DOWN){
+      int deltax,deltay;
+      deltax=prevx-x;
+      deltay=prevy-y;
+      anglex += 0.5*deltax;
+      angley += 0.5*deltay;
+      if(deltax!=0 && deltay!=0)
+         anglez += 0.5*sqrt(deltax*deltax + deltay*deltay);
+      if(anglex < 0)
+         anglex+=360.0;
+      if(angley < 0)
+         angley+=360.0;
+      if(anglez < 0)
+         anglez += 360.0;
+      if(anglex > 360.0)
+         anglex-=360.0;
+      if(angley > 360.0)
+         angley-=360.0;
+      if(anglez > 360.0)
+         anglez-=360.0;
+   }
+   else{
+      Mouse=GLUT_UP;
+   }
+   prevx=x;
+   prevy=y;
+   glutPostRedisplay();
+}
+
+
+void special(int key,int x,int y){
+   switch(key){
+      case GLUT_KEY_UP:
+         camz -= 0.1f;
+         break;
+      case GLUT_KEY_DOWN:
+         camz += 0.1f;
+         break;
+      case GLUT_KEY_LEFT:
+         camx -= 0.1f;
+         break;
+      case GLUT_KEY_RIGHT:
+         camx += 0.1f;
+         break;
+   }
+   glutPostRedisplay();
+}
+
+void passive(int x,int y){
+/*   DO NOTHING   */
+}
+
+void glSetupFuncs(void){
+   glutDisplayFunc(display);
+   glutReshapeFunc(reshape);
+   glutIdleFunc(idle);
+   glutSpecialFunc(special);
+   glutKeyboardFunc(keyboard);
+   glutMotionFunc(motion);
+   glutPassiveMotionFunc(passive);
+   glutSetCursor(GLUT_CURSOR_CROSSHAIR);
+}
+
+   cout<<"          _______________________________________________"<<endl;
+   cout<<"         |'W' to increase the speed                      |"<<endl;
+   cout<<"         |'S' to decrease the speed                      |"<<endl;
+   cout<<"         |'D' to rotate the handle clockwise             |"<<endl;
+   cout<<"         |'A' to rotate the handle anti-clockwise        |"<<endl;
+   cout<<"         |'r' or 'R' to reset the scene                  |"<<endl;
+   cout<<"         |--> Arrow keys to move the camera              |"<<endl;
+   cout<<"         |--> Mouse to move the scene                    |"<<endl;
+   cout<<"         |_______________________________________________|"<<endl;
+
+
+   
