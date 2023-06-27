@@ -1,6 +1,11 @@
 # 3DBicycleSimulationCG
 simulation of bicycle movement using OpenGL Library
 
+How to run?
+-> Fork and clone the entire directory and Install the Run++ extension on VSCode.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=AlbinBD.run" target="_blank">Click Here!</a> to install Run++ extension.
+
 Main Screen with Key information
 <img width="1280" alt="cg1" src="https://github.com/InfiniteN00b/3DBicycleSimulationCG/assets/96782523/e6973571-7fca-41ca-b692-3c80aa849952">
 Menu Options
